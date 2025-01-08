@@ -13,15 +13,14 @@ class _ClothesState extends State< karachiclothes> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 5,
-      child: Scaffold(
-
-        body: Column(
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
+            SizedBox(
+              height: 247,
               child: PageView(
                 controller: pageController,
                 children: [
@@ -175,50 +174,50 @@ class _ClothesState extends State< karachiclothes> {
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-              icon: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.home),
-                color: Color(0xff0D4858),
-              ),
-              label: "",
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.home),
+              color: Color(0xff0D4858),
             ),
-            BottomNavigationBarItem(
-              icon: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.settings),
-                color: Color(0xff0D4858),
-              ),
-              label: "",
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.settings),
+              color: Color(0xff0D4858),
             ),
-            BottomNavigationBarItem(
-              icon: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.add),
-                color: Color(0xff0D4858),
-              ),
-              label: "",
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.add),
+              color: Color(0xff0D4858),
             ),
-            BottomNavigationBarItem(
-              icon: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.message),
-                color: Color(0xff0D4858),
-              ),
-              label: "",
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.message),
+              color: Color(0xff0D4858),
             ),
-            BottomNavigationBarItem(
-              icon: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.menu),
-                color: Color(0xff0D4858),
-              ),
-              label: "",
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.menu),
+              color: Color(0xff0D4858),
             ),
-          ],
-        ),
+            label: "",
+          ),
+        ],
       ),
     );
   }

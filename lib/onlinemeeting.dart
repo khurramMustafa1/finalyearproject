@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fyppproject/review.dart';
 
-class trip extends StatelessWidget {
+class onlineMeeting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,7 @@ class trip extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Text('Trip Status',style: TextStyle(color: Color(0xff0D4858)),),
+        title: Text('Meeting Status',style: TextStyle(color: Color(0xff0D4858)),),
         actions: [
           IconButton(
             icon: Icon(Icons.more_vert),
@@ -31,7 +31,7 @@ class trip extends StatelessWidget {
           children: [
             Center(
               child: Text(
-                'Trip Progress',
+                'Meeting Progress',
                 style: TextStyle(
                   fontSize: 20,
                   color: Color(0xffff0D4858),
@@ -67,7 +67,7 @@ class trip extends StatelessWidget {
                           ),
                           SizedBox(height: 4),
                           Text(
-                            ' ${index + 1} Day',
+                            ' Stage ${index + 1}',
                             style: TextStyle(
                               fontSize: 10,
                               color: index < 3 ? Colors.white : Colors.grey,
@@ -86,11 +86,11 @@ class trip extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20,right: 22),
                 child: ListView(
                   children: [
-                    tripDetails(1, "Morning: Arrive at Peshawar Railway Station and have breakfast at a local eatery.\n10 AM:Board a bus to Peshawar University.\n11 AM - 5 PM: Explore Peshawar University campus, visit the various faculties, libraries, and museums.\n6 PM: Depart Peshawar University and check into a hotel near the university.\nEvening: Have dinner at a restaurant in the hotel or nearby."),
-                    tripDetails(2, "Morning: Have breakfast at the hotel.\n9 AM - 12 PM: Visit the Khyber Pass Museum, which showcases artifacts from the region's rich history and culture.\n1 PM - 3 PM: Explore the historic walled city of Peshawar, including the Qissa Khawani Bazaar and the Gor Khatri.\nEvening: Have dinner at a traditional Pakistani restaurant."),
-                    tripDetails(3, "Morning: Have breakfast at the hotel.\n9 AM - 12 PM: Visit the Peshawar Museum, which houses a vast collection of archaeological and historical exhibits.\n1 PM - 3 PM: Take a day trip to the Valley of Swat, a picturesque region known for its stunning landscapes and ancient ruins.\nEvening: Return to Peshawar and have dinner at a restaurant in the hotel."),
-                    tripDetails(4, "Morning: After a leisurely breakfast, embark on a day trip to the picturesque Swat Valley.\nMid-Morning: Reach Kalam Valley, a pristine valley surrounded by snow-capped mountains.\nAfternoon: Explore the stunning landscapes, take a leisurely walk along the river, or visit the ancient Buddhist ruins of Udegram.\nEvening: Return to Peshawar and enjoy a delicious dinner at a local restaurant, savoring the flavors of Pashtun cuisine."),
-                    tripDetails(5, "Morning: Visit the Bala Hisar Fort, a historic fort with stunning views of the city. Explore its ancient walls, mosques, and museums.\nAfternoon: Immerse yourself in the vibrant culture of Peshawar by attending a traditional Pashtun cultural show, featuring music, dance, and poetry.\nEvening: Have a farewell dinner at a renowned restaurant, indulging in a sumptuous feast of local delicacies.\nLate Evening: Depart for your onward journey, carrying with you unforgettable memories of Peshawar's rich history, warm hospitality, and breathtaking landscapes."),
+                    meetingDetails(1, "Morning: Start the online meeting and greet the participants.\n10 AM: Introduce the main agenda.\n11 AM - 12 PM: Discuss the key points for the first agenda item.\n12 PM - 1 PM: Q&A session for the first topic."),
+                    meetingDetails(2, "1 PM: Lunch break.\n2 PM - 3 PM: Continue the discussion on the next agenda item.\n3 PM - 4 PM: Conduct brainstorming session with team members.\nEvening: Wrap up the discussions and highlight action items."),
+                    meetingDetails(3, "Morning: Follow-up on the action items discussed in previous meetings.\n10 AM - 11 AM: Workshop on project progress and strategies.\n11 AM - 12 PM: Discussion on challenges and potential solutions."),
+                    meetingDetails(4, "Afternoon: Present updates on the online meeting platform.\n1 PM - 2 PM: Evaluate project metrics.\n3 PM: Open the floor for feedback and ideas from attendees."),
+                    meetingDetails(5, "Evening: Summarize the key takeaways.\n5 PM: End of online meeting with a final review of the next steps.\nLate Evening: Send out meeting minutes and action items to all participants."),
                   ],
                 ),
               ),
@@ -141,7 +141,7 @@ class trip extends StatelessWidget {
     );
   }
 
-  Widget tripDetails(int day, String description) {
+  Widget meetingDetails(int stage, String description) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -151,12 +151,12 @@ class trip extends StatelessWidget {
               backgroundColor: Color(0xff68ADC0),
               child: Icon(
                 Icons.check_circle,
-                color: day <= 3 ? Color(0xff0D4858) : Colors.grey[300],
+                color: stage <= 3 ? Color(0xff0D4858) : Colors.grey[300],
               ),
             ),
             SizedBox(width: 8),
             Text(
-              'Day $day',
+              'Stage $stage',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,

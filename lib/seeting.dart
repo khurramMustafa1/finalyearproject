@@ -7,8 +7,16 @@ import 'package:fyppproject/language.dart';
 import 'package:fyppproject/privacy.dart';
 import 'package:fyppproject/storage.dart';
 
-class setting extends StatelessWidget {
+class setting extends StatefulWidget {
   const setting({super.key});
+
+  @override
+  _settingState createState() => _settingState();
+}
+
+class _settingState extends State<setting> {
+  bool isDarkMode = false; // Tracks Dark Mode toggle state
+  bool isNotificationsOn = true; // Tracks Notifications toggle state
 
   @override
   Widget build(BuildContext context) {
@@ -51,373 +59,202 @@ class setting extends StatelessWidget {
               child: Column(
                 children: [
                   // Account settings
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => accountseeting()));
-                            print('Account settings icon pressed');
-                          },
-                          icon: const Icon(Icons.person, color: Color(0xff68ADC0), size: 28),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => accountseeting()));
-                            },
-                            style: TextButton.styleFrom(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: const Text(
-                              "Account settings",
-                              style: TextStyle(
-                                color: Color(0xffADD2DC),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  buildSettingsOption(
+                    context,
+                    "Account settings",
+                    Icons.person,
+                        () => Navigator.push(context, MaterialPageRoute(builder: (context) => accountseeting())),
                   ),
                   // Language
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => language()));
-                            print('Language icon pressed');
-                          },
-                          icon: const Icon(Icons.language, color: Color(0xff68ADC0), size: 28),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => language()));
-                              print('Language text pressed');
-                            },
-                            style: TextButton.styleFrom(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: const Text(
-                              "Language",
-                              style: TextStyle(
-                                color: Color(0xffADD2DC),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  buildSettingsOption(
+                    context,
+                    "Language",
+                    Icons.language,
+                        () => Navigator.push(context, MaterialPageRoute(builder: (context) => language())),
                   ),
-                  // Notifications toggle
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            print('Notifications icon pressed');
-                          },
-                          icon: const Icon(Icons.notifications, color: Color(0xff68ADC0), size: 28),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: TextButton(
-                            onPressed: () {
-                              print('Notifications text pressed');
-                            },
-                            style: TextButton.styleFrom(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: const Text(
-                              "Notifications",
-                              style: TextStyle(
-                                color: Color(0xffADD2DC),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            print('Notifications toggle pressed');
-                          },
-                          icon: const Icon(Icons.toggle_on, color: Color(0xff68ADC0), size: 32),
-                        ),
-                      ],
-                    ),
+                  // Notifications Toggle
+                  buildToggleOption(
+                    context,
+                    "Notifications",
+                    Icons.notifications,
+                    isNotificationsOn,
+                        (value) {
+                      setState(() {
+                        isNotificationsOn = value;
+                      });
+                      print('Notifications toggled: ${isNotificationsOn ? "On" : "Off"}');
+                    },
                   ),
-                  // Dark Mode toggle
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            print('Dark Mode icon pressed');
-                          },
-                          icon: const Icon(Icons.dark_mode, color: Color(0xff68ADC0), size: 28),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: TextButton(
-                            onPressed: () {
-                              print('Dark Mode text pressed');
-                            },
-                            style: TextButton.styleFrom(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: const Text(
-                              "Dark Mode",
-                              style: TextStyle(
-                                color: Color(0xffADD2DC),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            print('Dark Mode toggle pressed');
-                          },
-                          icon: const Icon(Icons.toggle_off, color: Color(0xff68ADC0), size: 32),
-                        ),
-                      ],
-                    ),
+                  // Dark Mode Toggle
+                  buildToggleOption(
+                    context,
+                    "Dark Mode",
+                    Icons.dark_mode,
+                    isDarkMode,
+                        (value) {
+                      setState(() {
+                        isDarkMode = value;
+                      });
+                      print('Dark Mode toggled: ${isDarkMode ? "On" : "Off"}');
+                    },
                   ),
                   // Data Storage
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => storage()));
-                            print('Data Storage icon pressed');
-                          },
-                          icon: const Icon(Icons.storage, color: Color(0xff68ADC0), size: 28),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => storage()));
-                              print('Data Storage text pressed');
-                            },
-                            style: TextButton.styleFrom(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: const Text(
-                              "Data Storage",
-                              style: TextStyle(
-                                color: Color(0xffADD2DC),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  buildSettingsOption(
+                    context,
+                    "Data Storage",
+                    Icons.storage,
+                        () => Navigator.push(context, MaterialPageRoute(builder: (context) => storage())),
                   ),
                   // Bookings
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => booking()));
-                            print('Bookings icon pressed');
-                          },
-                          icon: const Icon(Icons.hourglass_empty, color: Color(0xffFFB266), size: 28),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => booking()));
-                              print('Bookings text pressed');
-                            },
-                            style: TextButton.styleFrom(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: const Text(
-                              "Bookings",
-                              style: TextStyle(
-                                color: Color(0xffADD2DC),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  buildSettingsOption(
+                    context,
+                    "Bookings",
+                    Icons.hourglass_empty,
+                        () => Navigator.push(context, MaterialPageRoute(builder: (context) => booking())),
                   ),
                   // Privacy and Security
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => privacy()));
-                            print('Privacy and Security icon pressed');
-                          },
-                          icon: const Icon(Icons.lock, color: Color(0xff68ADC0), size: 28),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => privacy()));
-                              print('Privacy and Security text pressed');
-                            },
-                            style: TextButton.styleFrom(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: const Text(
-                              "Privacy and Security",
-                              style: TextStyle(
-                                color: Color(0xffADD2DC),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  buildSettingsOption(
+                    context,
+                    "Privacy and Security",
+                    Icons.lock,
+                        () => Navigator.push(context, MaterialPageRoute(builder: (context) => privacy())),
                   ),
                   // Currency Converter
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => currency()));
-                            print('Currency Converter icon pressed');
-                          },
-                          icon: const Icon(Icons.currency_exchange, color: Color(0xff68ADC0), size: 28),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => currency()));
-                              print('Currency Converter text pressed');
-                            },
-                            style: TextButton.styleFrom(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: const Text(
-                              "Currency Converter",
-                              style: TextStyle(
-                                color: Color(0xffADD2DC),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  buildSettingsOption(
+                    context,
+                    "Currency Converter",
+                    Icons.currency_exchange,
+                        () => Navigator.push(context, MaterialPageRoute(builder: (context) => currency())),
                   ),
-
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => help()));
-                            print('Help and Support');
-                          },
-                          icon: const Icon(Icons.help, color: Color(0xff68ADC0), size: 28),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => help()));
-                              print('Help and Support');
-                            },
-                            style: TextButton.styleFrom(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: const Text(
-                              "Help and support",
-                              style: TextStyle(
-                                color: Color(0xffADD2DC),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  // Help and Support
+                  buildSettingsOption(
+                    context,
+                    "Help and support",
+                    Icons.help,
+                        () => Navigator.push(context, MaterialPageRoute(builder: (context) => help())),
                   ),
-                  // Logout
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            print('Logout icon pressed');
-                          },
-                          icon: const Icon(Icons.logout, color: Color(0xff68ADC0), size: 28),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: TextButton(
-                            onPressed: () {
-                              print('Logout text pressed');
-                            },
-                            style: TextButton.styleFrom(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: const Text(
-                              "Logout",
-                              style: TextStyle(
-                                color: Color(0xffADD2DC),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  // Logout with confirmation dialog
+                  buildSettingsOption(
+                    context,
+                    "Logout",
+                    Icons.logout,
+                        () => showLogoutDialog(context),
                   ),
                 ],
               ),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildSettingsOption(
+      BuildContext context,
+      String title,
+      IconData icon,
+      VoidCallback onPressed,
+      ) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      child: Row(
+        children: [
+          IconButton(
+            onPressed: onPressed,
+            icon: Icon(icon, color: const Color(0xff68ADC0), size: 28),
+          ),
+          const SizedBox(width: 20),
+          Expanded(
+            child: TextButton(
+              onPressed: onPressed,
+              style: TextButton.styleFrom(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.zero,
+              ),
+              child: Text(
+                title,
+                style: const TextStyle(
+                  color: Color(0xffADD2DC),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildToggleOption(
+      BuildContext context,
+      String title,
+      IconData icon,
+      bool value,
+      ValueChanged<bool> onChanged,
+      ) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      child: Row(
+        children: [
+          IconButton(
+            onPressed: () {
+              print('$title icon pressed');
+            },
+            icon: Icon(icon, color: const Color(0xff68ADC0), size: 28),
+          ),
+          const SizedBox(width: 20),
+          Expanded(
+            child: TextButton(
+              onPressed: () {
+                print('$title text pressed');
+              },
+              style: TextButton.styleFrom(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.zero,
+              ),
+              child: Text(
+                title,
+                style: const TextStyle(
+                  color: Color(0xffADD2DC),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+          Switch(
+            value: value,
+            onChanged: onChanged,
+            activeColor: const Color(0xff68ADC0),
+            inactiveThumbColor: Colors.grey,
+          ),
+        ],
+      ),
+    );
+  }
+
+  void showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Logout"),
+        content: const Text("Are you sure you want to logout?"),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              print('Logout cancelled');
+            },
+            child: const Text("Cancel"),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              print('User logged out');
+              // Perform logout action here
+            },
+            child: const Text("Yes"),
           ),
         ],
       ),

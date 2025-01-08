@@ -4,44 +4,57 @@ import 'package:fyppproject/festivals.dart';
 import 'package:fyppproject/food.dart';
 import 'package:fyppproject/hotel.dart';
 import 'package:fyppproject/overview2.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class overviewislamabad extends StatelessWidget {
+class overviewislamabad extends StatefulWidget {
   const overviewislamabad({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 5,
-      child: Scaffold(
+  State<overviewislamabad> createState() => _overviewislamabadState();
+}
 
-        body: Column(
+class _overviewislamabadState extends State<overviewislamabad> {
+  @override
+  final PageController pageController=PageController();
+  Widget build(BuildContext context) {
+    return Scaffold(
+backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-                child: PageView.builder(
-                    controller: PageController(),
-                    itemCount: 2,
-                    itemBuilder: (context, i) {
-                      final images = [
-                        'assets/images/isboverview1.jpg',
-                        'assets/images/isboverview2.jpg',
-                      ];
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Expanded(
-                                child: ClipRect(
-                                  child: Image.asset(
-                                    images[i],
-                                    fit: BoxFit.cover,
-                                  ),
-                                ))
-                          ],
-                        ),
-                      );
-                    })),
+          SizedBox(
+            height: 247,
+            child: PageView(
+            controller: pageController,
+            children: [
+              Image.asset(
+                'assets/images/isboverview1.jpg',
+                fit: BoxFit.contain,
+                width: 363,
+              ),
+              Image.asset(
+                "assets/images/isboverview2.jpg",
+                fit: BoxFit.contain,
+              ),
+            ],
+                    ),
+          ),
+      SizedBox(height: 0),
+      Center(
+        child: SmoothPageIndicator(
+          controller: pageController,
+          count: 3,
+          effect: ExpandingDotsEffect(
+            activeDotColor: Colors.blue,
+            dotColor: Colors.grey,
+            dotHeight: 8,
+            dotWidth: 8,
+            spacing: 8,
+          ),
+        ),
+      ),
             SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 26),
@@ -200,31 +213,6 @@ class overviewislamabad extends StatelessWidget {
                   ]),
                 ),
               ),
-            ),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed, // For 5 or more items
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.message),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.menu),
-              label: '',
             ),
           ],
         ),

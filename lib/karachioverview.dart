@@ -4,44 +4,61 @@ import 'package:fyppproject/festivals.dart';
 import 'package:fyppproject/food.dart';
 import 'package:fyppproject/hotel.dart';
 import 'package:fyppproject/overview2.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class overviewkarachi extends StatelessWidget {
+class overviewkarachi extends StatefulWidget {
   const overviewkarachi({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 5,
-      child: Scaffold(
+  State<overviewkarachi> createState() => _overviewkarachiState();
+}
 
-        body: Column(
+class _overviewkarachiState extends State<overviewkarachi> {
+  @override
+  final PageController pageController=PageController();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-                child: PageView.builder(
-                    controller: PageController(),
-                    itemCount: 2,
-                    itemBuilder: (context, i) {
-                      final images = [
-                        'assets/images/karachioverview1.jpg',
-                        'assets/images/karachioverview2.jpg',
-                      ];
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Expanded(
-                                child: ClipRect(
-                                  child: Image.asset(
-                                    images[i],
-                                    fit: BoxFit.cover,
-                                  ),
-                                ))
-                          ],
-                        ),
-                      );
-                    })),
+           SizedBox(
+             height: 247,
+             child: PageView(
+                       controller: pageController,
+                       children: [
+              Image.asset(
+                'assets/images/karachihotel.jpg',
+                fit: BoxFit.contain,
+                width: 500,
+              ),
+              Image.asset(
+                'assets/images/karachihotel1.jpg',
+                fit: BoxFit.contain,
+                width: 500,
+              ),
+              Image.asset(
+                "assets/images/karachihotel2.jpg",
+                fit: BoxFit.contain,
+              )
+                       ],
+                     ),
+           ),
+            SizedBox(height: 2),
+            Center(
+            child: SmoothPageIndicator(
+            controller: pageController,
+            count: 3,
+            effect: ExpandingDotsEffect(
+            activeDotColor: Colors.blue,
+            dotColor: Colors.grey,
+            dotHeight: 4,
+            dotWidth: 4,
+            spacing: 8,
+            ),
+            )),
             SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 26),
@@ -203,31 +220,31 @@ class overviewkarachi extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed, // For 5 or more items
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.message),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.menu),
-              label: '',
-            ),
-          ],
-        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // For 5 or more items
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu),
+            label: '',
+          ),
+        ],
       ),
     );
   }

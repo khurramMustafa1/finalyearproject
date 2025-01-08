@@ -13,15 +13,14 @@ class _IslamabadClothesState extends State<IslamabadClothes> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 5,
-      child: Scaffold(
-
-        body: Column(
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
+            SizedBox(
+              height: 247,
               child: PageView(
                 controller: pageController,
                 children: [
@@ -206,30 +205,30 @@ class _IslamabadClothesState extends State<IslamabadClothes> {
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: Color(0xff0D4858)),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings, color: Color(0xff0D4858)),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add, color: Color(0xff0D4858)),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.message, color: Color(0xff0D4858)),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.menu, color: Color(0xff0D4858)),
-              label: "",
-            ),
-          ],
-        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home, color: Color(0xff0D4858)),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings, color: Color(0xff0D4858)),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add, color: Color(0xff0D4858)),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message, color: Color(0xff0D4858)),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu, color: Color(0xff0D4858)),
+            label: "",
+          ),
+        ],
       ),
     );
   }

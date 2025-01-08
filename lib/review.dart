@@ -10,7 +10,9 @@ class review extends StatelessWidget {
         backgroundColor: Color(0xffF5F5F5),
         title:Text("Review",style: TextStyle(color: Color(0xff0D4858),
             fontSize: 24,fontWeight: FontWeight.bold),),
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back)),
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: Icon(Icons.arrow_back)),
         actions: [IconButton(onPressed: (){}, icon: Icon(Icons.more_vert))],
         centerTitle: true,
       ),

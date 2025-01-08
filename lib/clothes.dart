@@ -13,15 +13,14 @@ class _clothesState extends State<clothes> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-
-      length: 5, // Adjusted to match the number of tabs
-      child: Scaffold(
-        body: Column(
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
+            SizedBox(
+              height: 247,
               child: PageView(
                 controller: pageController,
                 children: [
@@ -88,11 +87,11 @@ class _clothesState extends State<clothes> {
                         children: [Text("Weather:",style:
                         TextStyle(color: Color(0xff000000),fontSize:
                         13,fontWeight: FontWeight.w900),),
-                          Text("Pleasant, with warm days and cool nights.",style:
+                          Text("Pleasant,with warm days and cool .",style:
                           TextStyle(color: Color(0xff000000),fontSize:
                           13,),),
                         ],
-
+            
                       ),
                       Row(
                         children: [
@@ -141,7 +140,7 @@ class _clothesState extends State<clothes> {
                           TextStyle(color: Color(0xff000000),fontSize:
                           13,),),
                         ],
-
+            
                       ),
                       Row(
                         children: [
@@ -153,9 +152,9 @@ class _clothesState extends State<clothes> {
                           13,),softWrap: true,maxLines: 4,),
                         ],
                       ),
-                Text("fabrics like cotton and linen. Light-colored",style:
-              TextStyle(color: Color(0xff000000),fontSize:
-              13,),softWrap: true,maxLines: 4,),
+                      Text("fabrics like cotton and linen. Light-colored",style:
+                      TextStyle(color: Color(0xff000000),fontSize:
+                      13,),softWrap: true,maxLines: 4,),
                       Text("lothing can help"
                           " reflect the sun's heat.  ",style:
                       TextStyle(color: Color(0xff000000),fontSize:
@@ -171,29 +170,29 @@ class _clothesState extends State<clothes> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15,),
               child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(onPressed: (){}, child: Text("See all",style:
                   TextStyle(color: Color(0xff0D4858),fontSize: 14,fontWeight: FontWeight.w900),))
                 ],
               ),
             )
-
+            
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(items: [
+      ),
+      bottomNavigationBar: BottomNavigationBar(items: [
         BottomNavigationBarItem(icon: IconButton(onPressed: (){}, icon:
         Icon(Icons.home),color: Color(0xff0D4858),),label: ""),
-          BottomNavigationBarItem(icon: IconButton(onPressed: (){}, icon:
-          Icon(Icons.settings),color: Color(0xff0D4858),),label: ""),
-          BottomNavigationBarItem(icon: IconButton(onPressed: (){}, icon:
-          Icon(Icons.add),color: Color(0xff0D4858),),label: ""),
-          BottomNavigationBarItem(icon: IconButton(onPressed: (){}, icon:
-          Icon(Icons.message),color: Color(0xff0D4858),),label: ""),
-          BottomNavigationBarItem(icon: IconButton(onPressed: (){}, icon:
-          Icon(Icons.menu),color: Color(0xff0D4858),),label: ""),
-        ]),
-      ),
+        BottomNavigationBarItem(icon: IconButton(onPressed: (){}, icon:
+        Icon(Icons.settings),color: Color(0xff0D4858),),label: ""),
+        BottomNavigationBarItem(icon: IconButton(onPressed: (){}, icon:
+        Icon(Icons.add),color: Color(0xff0D4858),),label: ""),
+        BottomNavigationBarItem(icon: IconButton(onPressed: (){}, icon:
+        Icon(Icons.message),color: Color(0xff0D4858),),label: ""),
+        BottomNavigationBarItem(icon: IconButton(onPressed: (){}, icon:
+        Icon(Icons.menu),color: Color(0xff0D4858),),label: ""),
+      ]),
     );
   }
 }

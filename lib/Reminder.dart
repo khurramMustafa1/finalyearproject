@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fyppproject/onlinemeeting.dart';
+import 'package:fyppproject/trip.dart';
 
 class Reminder {
   final String image;
@@ -28,93 +30,103 @@ class ReminderScreen extends StatefulWidget {
 }
 
 class _ReminderScreenState extends State<ReminderScreen> {
-  List<Reminder> reminders = [
-    Reminder(
-      image: 'assets/images/i1.png',
-      title: 'Online Meeting',
-      description: 'Meeting scheduled at 3:00 PM.',
-      date: 'Today',
-      actionButton1: TextButton(
-        onPressed: () {},
-        style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
-        child: const Text('View', style: TextStyle(color: Colors.white)),
+  List<Reminder>? reminders;
+
+  @override
+  void initState() {
+    super.initState();
+    reminders = [
+      Reminder(
+        image: 'assets/images/i1.png',
+        title: 'Online Meeting',
+        description: 'Meeting scheduled at 3:00 PM.',
+        date: 'Today',
+        actionButton1: TextButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>onlineMeeting()));
+          },
+          style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
+          child: const Text('View', style: TextStyle(color: Colors.white)),
+        ),
+        actionButton2: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
+          child: const Text('Edit', style: TextStyle(color: Colors.white)),
+        ),
+        actionButton3: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
+          child: const Text('Delete', style: TextStyle(color: Colors.white)),
+        ),
       ),
-      actionButton2: TextButton(
-        onPressed: () {},
-        style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
-        child: const Text('Edit', style: TextStyle(color: Colors.white)),
+      Reminder(
+        image: 'assets/images/i2.png',
+        title: 'Bus Reminder',
+        description: 'Your bus departs at 6:00 PM.',
+        date: 'Today',
+        actionButton1: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
+          child: const Text('View', style: TextStyle(color: Colors.white)),
+        ),
+        actionButton2: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
+          child: const Text('Edit', style: TextStyle(color: Colors.white)),
+        ),
+        actionButton3: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
+          child: const Text('Delete', style: TextStyle(color: Colors.white)),
+        ),
       ),
-      actionButton3: TextButton(
-        onPressed: () {},
-        style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
-        child: const Text('Delete', style: TextStyle(color: Colors.white)),
+      Reminder(
+        image: 'assets/images/i5.png',
+        title: 'Dinner Reservation',
+        description: 'Dinner at Pearl Continental Hotel Lahore at 8:00 PM.',
+        date: 'Tomorrow',
+        actionButton1: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
+          child: const Text('View', style: TextStyle(color: Colors.white)),
+        ),
+        actionButton2: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
+          child: const Text('Edit', style: TextStyle(color: Colors.white)),
+        ),
+        actionButton3: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
+          child: const Text('Delete', style: TextStyle(color: Colors.white)),
+        ),
       ),
-    ),
-    Reminder(
-      image: 'assets/images/i2.png',
-      title: 'Bus Reminder',
-      description: 'Your bus departs at 6:00 PM.',
-      date: 'Today',
-      actionButton1: TextButton(
-        onPressed: () {},
-        style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
-        child: const Text('View', style: TextStyle(color: Colors.white)),
+      Reminder(
+        image: 'assets/images/i4.png',
+        title: 'lahore Trip',
+        description:
+        'lahore Trip will start on 5 December, 2024 and it will end on 14 December, 2024.',
+        date: '5 December',
+        actionButton1: TextButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => trip()));
+          },
+          style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
+          child: const Text('View', style: TextStyle(color: Colors.white)),
+        ),
+        actionButton2: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
+          child: const Text('Edit', style: TextStyle(color: Colors.white)),
+        ),
+        actionButton3: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
+          child: const Text('Delete', style: TextStyle(color: Colors.white)),
+        ),
       ),
-      actionButton2: TextButton(
-        onPressed: () {},
-        style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
-        child: const Text('Edit', style: TextStyle(color: Colors.white)),
-      ),
-      actionButton3: TextButton(
-        onPressed: () {},
-        style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
-        child: const Text('Delete', style: TextStyle(color: Colors.white)),
-      ),
-    ),
-    Reminder(
-      image: 'assets/images/i5.png',
-      title: 'Dinner Reservation',
-      description: 'Dinner at Pearl Continental Hotel Lahore at 8:00 PM.',
-      date: 'Tomorrow',
-      actionButton1: TextButton(
-        onPressed: () {},
-        style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
-        child: const Text('View', style: TextStyle(color: Colors.white)),
-      ),
-      actionButton2: TextButton(
-        onPressed: () {},
-        style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
-        child: const Text('Edit', style: TextStyle(color: Colors.white)),
-      ),
-      actionButton3: TextButton(
-        onPressed: () {},
-        style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
-        child: const Text('Delete', style: TextStyle(color: Colors.white)),
-      ),
-    ),
-    Reminder(
-      image: 'assets/images/i4.png',
-      title: 'Skardu Trip',
-      description:
-      'Skardu Trip will start on 5 December, 2024 and it will end on 14 December, 2024.',
-      date: '5 December',
-      actionButton1: TextButton(
-        onPressed: () {},
-        style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
-        child: const Text('View', style: TextStyle(color: Colors.white)),
-      ),
-      actionButton2: TextButton(
-        onPressed: () {},
-        style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
-        child: const Text('Edit', style: TextStyle(color: Colors.white)),
-      ),
-      actionButton3: TextButton(
-        onPressed: () {},
-        style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
-        child: const Text('Delete', style: TextStyle(color: Colors.white)),
-      ),
-    ),
-  ];
+    ];
+  }
 
   Widget buildReminderList(List<Reminder> reminders) {
     return ListView.builder(
@@ -123,7 +135,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Container(
-            height: 150,
+            height: 160,
             width: 320,
             margin: const EdgeInsets.only(bottom: 10),
             decoration: BoxDecoration(
@@ -227,35 +239,38 @@ class _ReminderScreenState extends State<ReminderScreen> {
           ],
         ),
         leading: IconButton(
-          onPressed: () {  Navigator.pop(context);},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(Icons.arrow_back),
         ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-      Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "All Reminders (${reminders.length})",
-            style: const TextStyle(
-
-            fontSize: 18,
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "All Reminders (${reminders?.length ?? 0})",
+                  style: const TextStyle(
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-          IconButton(onPressed: (){}, icon: Icon(Icons.more_vert))
-        ],
-      ),
+                IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))
+              ],
+            ),
           ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: buildReminderList(reminders),
+              child: reminders == null
+                  ? const Center(child: CircularProgressIndicator())
+                  : buildReminderList(reminders!),
             ),
           ),
         ],

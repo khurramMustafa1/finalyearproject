@@ -4,13 +4,14 @@ import 'package:fyppproject/isbclothes.dart';
 import 'package:fyppproject/isbhotel.dart';
 import 'package:fyppproject/islambadfood.dart';
 import 'package:fyppproject/islambadoverview.dart';
+import 'package:fyppproject/overview2.dart';
 class islambad extends StatelessWidget {
   const islambad ({super.key});
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: 6,
       child: Scaffold(
         appBar: AppBar(
           title: Text("Islambad",
@@ -23,6 +24,7 @@ class islambad extends StatelessWidget {
             isScrollable: true,
             tabs: const [
               Tab(text: "Overview"),
+              Tab(text: "feedbacks"),
               Tab(text: "Clothes"),
               Tab(text: "Food"),
               Tab(text: "Festivals"),
@@ -34,6 +36,7 @@ class islambad extends StatelessWidget {
         body: TabBarView(
           children: [
             overviewislamabad(),
+            overview2(),
             IslamabadClothes(),
             IsbFood(),
             food(),

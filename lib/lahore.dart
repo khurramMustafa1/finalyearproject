@@ -4,6 +4,7 @@ import 'package:fyppproject/festivals.dart';
 import 'package:fyppproject/food.dart';
 import 'package:fyppproject/hotel.dart';
 import 'package:fyppproject/overview.dart';
+import 'package:fyppproject/overview2.dart';
 
 class lahore extends StatelessWidget {
   const lahore({super.key});
@@ -11,8 +12,9 @@ class lahore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: 6,
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(
             "Lahore",
@@ -30,6 +32,7 @@ class lahore extends StatelessWidget {
             isScrollable: true,
             tabs: const [
               Tab(text: "Overview"),
+              Tab(text: "Feedbacks"),
               Tab(text: "Clothes"),
               Tab(text: "Food"),
               Tab(text: "Festivals"),
@@ -41,6 +44,7 @@ class lahore extends StatelessWidget {
         body: TabBarView(
           children: [
             overview(),
+            overview2(),
             clothes(),
             food(),
             festivals(),

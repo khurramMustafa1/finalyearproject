@@ -148,7 +148,7 @@ class _TravelBuddyState extends State<TravelBuddy> {
             ),
           ),
           SizedBox(
-            height: 130,
+            height: 180,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 22.0),
@@ -156,6 +156,7 @@ class _TravelBuddyState extends State<TravelBuddy> {
               itemBuilder: (context, index) {
                 return Container(
                   width: 120,
+                  height: 300,
                   margin: const EdgeInsets.only(right: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -176,7 +177,7 @@ class _TravelBuddyState extends State<TravelBuddy> {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      const SizedBox(height: 5),
+                      const SizedBox(height: 2),
                       list[index].actionButton,
                     ],
                   ),
@@ -282,6 +283,7 @@ class _TravelBuddyState extends State<TravelBuddy> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Row(
           children: [
             Expanded(

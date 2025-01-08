@@ -40,7 +40,7 @@ class _page1State extends State<page1> {
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.build,color: Colors.black,),
+            icon: Icon(Icons.build,),
             label: '',
           ),
           BottomNavigationBarItem(
