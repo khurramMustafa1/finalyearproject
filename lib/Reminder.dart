@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fyppproject/Dinnerreservation.dart';
+import 'package:fyppproject/busreminder.dart';
 import 'package:fyppproject/onlinemeeting.dart';
 import 'package:fyppproject/trip.dart';
 
@@ -65,7 +67,9 @@ class _ReminderScreenState extends State<ReminderScreen> {
         description: 'Your bus departs at 6:00 PM.',
         date: 'Today',
         actionButton1: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>BusReminder()));
+          },
           style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
           child: const Text('View', style: TextStyle(color: Colors.white)),
         ),
@@ -86,7 +90,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
         description: 'Dinner at Pearl Continental Hotel Lahore at 8:00 PM.',
         date: 'Tomorrow',
         actionButton1: TextButton(
-          onPressed: () {},
+          onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context)=>DinnerReservation()));},
           style: TextButton.styleFrom(backgroundColor: const Color(0xff0D4858)),
           child: const Text('View', style: TextStyle(color: Colors.white)),
         ),

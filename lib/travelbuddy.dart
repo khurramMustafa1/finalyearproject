@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fyppproject/message1.dart';
 
 class Buddy {
   final String name;
   final String image;
   final Widget actionButton;
+  final Widget? page;
 
-  Buddy({required this.name, required this.image, required this.actionButton});
+  Buddy({required this.name, required this.image, required this.actionButton,this.page});
 }
 
 class TravelBuddy extends StatefulWidget {
@@ -36,6 +38,7 @@ class _TravelBuddyState extends State<TravelBuddy> {
         },
         icon: const Icon(Icons.message),
       ),
+      page:message1(),
     ),
     Buddy(
       name: "Muhammad Arif",
@@ -81,6 +84,7 @@ class _TravelBuddyState extends State<TravelBuddy> {
         style: TextButton.styleFrom(backgroundColor: Colors.blue),
         child: const Text("Add Buddy", style: TextStyle(color: Colors.white)),
       ),
+
     ),
     Buddy(
       name: "Hussain",
@@ -154,32 +158,39 @@ class _TravelBuddyState extends State<TravelBuddy> {
               padding: const EdgeInsets.symmetric(horizontal: 22.0),
               itemCount: list.length,
               itemBuilder: (context, index) {
-                return Container(
-                  width: 120,
-                  height: 300,
-                  margin: const EdgeInsets.only(right: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color(0xffADD2DC),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundImage: AssetImage(list[index].image),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        list[index].name,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                return GestureDetector(
+                  onTap: (){
+                    if(buddies[index].page!=null){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>message1()));
+                    }
+                  },
+                  child: Container(
+                    width: 120,
+                    height: 300,
+                    margin: const EdgeInsets.only(right: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color(0xffADD2DC),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundImage: AssetImage(list[index].image),
                         ),
-                      ),
-                      const SizedBox(height: 2),
-                      list[index].actionButton,
-                    ],
+                        const SizedBox(height: 8),
+                        Text(
+                          list[index].name,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        list[index].actionButton,
+                      ],
+                    ),
                   ),
                 );
               },

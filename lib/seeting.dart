@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fyppproject/accountseeting.dart';
 import 'package:fyppproject/booking.dart';
 import 'package:fyppproject/currencyconverter.dart';
@@ -250,7 +251,8 @@ class _settingState extends State<setting> {
           ),
           TextButton(
             onPressed: () {
-              Navigator.pop(context);
+             Navigator.pop(context);
+              SystemNavigator.pop();
               print('User logged out');
               // Perform logout action here
             },

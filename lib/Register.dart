@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fyppproject/Login.dart';
+import 'package:string_validator/string_validator.dart';
 
 class Register extends StatefulWidget {
   Register({super.key});
@@ -147,6 +148,11 @@ class _RegisterState extends State<Register> {
                       return;
                     }
                     if (emailController.text.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Please enter valid email")));
+                      return;
+                    }
+                    if (!emailController.text.isEmail) {
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("Please enter email")));
                       return;

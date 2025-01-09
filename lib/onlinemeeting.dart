@@ -19,7 +19,9 @@ class onlineMeeting extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.more_vert),
             color: Color(0xffff0D4858),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ],
         centerTitle: true,

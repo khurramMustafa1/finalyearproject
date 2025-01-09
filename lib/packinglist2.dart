@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fyppproject/packinglist.dart';
 import 'package:fyppproject/space2.dart';
 
 class packinglist2 extends StatefulWidget {
@@ -263,7 +264,7 @@ class _PackingList2State extends State<packinglist2> {
                   SizedBox(width: 10),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>space2()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>packing2()));
                     },
                     style: TextButton.styleFrom(
                       backgroundColor: Color(0xff0D4858),
